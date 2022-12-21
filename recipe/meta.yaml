@@ -1,57 +1,29 @@
 {% set name = "opentelemetry-instrumentation-mysql" %}
-{% set version = "0.33b0" %}
-
+{% set version = "0.36b0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/opentelemetry-instrumentation-mysql-{{ version }}.tar.gz
-  sha256: 7842731c9d9cd28afebadad2e8ac115f693880775ed961e7a2774eeccfc8202f
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/opentelemetry_instrumentation_mysql-{{ version }}.tar.gz
+  sha256: 6942528f2c3595b4db7e923c372c8176db53094adb4fea611864ca132b9e6b71
 
 build:
-  number: 0
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
+  number: 0
 
 requirements:
   host:
+    - python >=3.7
     - pip
-    - python >=3.6
+    - hatchling
   run:
-    - opentelemetry-api ~=1.12
-    - opentelemetry-instrumentation ==0.33b0
-    - opentelemetry-instrumentation-dbapi ==0.33b0
-    - python >=3.6
-    - wrapt <2.0.0,>=1.0.0
-    # - opentelemetry-test ==0.24b0
-    # - mysql-connector-python ~=8.0
-    # - opentelemetry-test ==0.25b0
-    # - mysql-connector-python ~=8.0
-    # - opentelemetry-test ==0.25b2
-    # - mysql-connector-python ~=8.0
-    # - opentelemetry-test-utils ==0.26b1
-    # - mysql-connector-python ~=8.0
-    # - opentelemetry-test-utils ==0.27b0
-    # - mysql-connector-python ~=8.0
-    # - opentelemetry-test-utils ==0.28b0
-    # - mysql-connector-python ~=8.0
-    # - opentelemetry-test-utils ==0.28b1
-    # - mysql-connector-python ~=8.0
-    # - opentelemetry-test-utils ==0.29b0
-    # - mysql-connector-python ~=8.0
-    # - opentelemetry-test-utils ==0.30b0
-    # - mysql-connector-python ~=8.0
-    # - opentelemetry-test-utils ==0.30b1
-    # - mysql-connector-python ~=8.0
-    # - opentelemetry-test-utils ==0.31b0
-    # - mysql-connector-python ~=8.0
-    # - opentelemetry-test-utils ==0.32b0
-    # - mysql-connector-python ~=8.0
-    # - opentelemetry-test-utils ==0.33b0
-    # - mysql-connector-python ~=8.0
-
+    - python >=3.7
+    - opentelemetry-api >=1.12,<2.dev0
+    - opentelemetry-instrumentation-dbapi ==0.36b0
+    - opentelemetry-instrumentation ==0.36b0
 test:
   imports:
     - opentelemetry
